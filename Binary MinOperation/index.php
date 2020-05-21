@@ -15,4 +15,4 @@ function minOperations($n)
      return $valorDec;
 }
 
-$fptr = fopen(getenv("OUTPUT_PATH"), "w");
+minOperations(13); // 9 é o caminho mais rápido
