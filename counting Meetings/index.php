@@ -9,19 +9,31 @@
  *  2. INTEGER_ARRAY lastDay
  */
 
-function countMeetings($firstDay, $lastDay) {
-
-    foreach($lastDay as $key => $item) {
-        $days[$key] = [
-            0 => $firstDay[$key],
-            1 => $lastDay[$key]
+ function fillNumbers($start, $end) {
+    if($start === $end) {
+        return [
+            0 => $start,
+            1 => $end
         ];
     }
 
-    var_dump( $days);
+    $fills = [];
+    for ($i= $start; $start < $end; $i++) { 
+        array_push($fills, $start);
+    }
+    
+    return $fills;
+ }
+
+function countMeetings($firstDay, $lastDay) {
+    foreach($lastDay as $key => $item) {
+        $days[] = fillNumbers($firstDay[$key],$lastDay[$key]);
+    }
+
+    var_dump($days);
 }
 
-$fisrt_day = [1, 2, 1, 2, 4];
-$last_day = [3, 2, 1, 3, 5];
+$fisrt_day = [1, 2, 1, 2, 20];
+$last_day = [3, 2, 1, 3, 22];
 
  countMeetings($fisrt_day, $last_day);
