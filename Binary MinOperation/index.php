@@ -8,11 +8,12 @@
  */
 function minOperations($n)
 {
-   $valorDec = $n;
+    $valorDec = $n;
     for ($i = 1; $i < strlen($n); $i++) {
         $valorDec[$i] = (int)$valorDec[$i-1] ^ (int)$n[$i];
     }
-     return $valorDec;
+    return $valorDec;
 }
 
-minOperations(13); // 9 é o caminho mais rápido
+$result = bindec(minOperations(decbin(13))); // 9 é o caminho mais rápido
+
