@@ -4,13 +4,15 @@ function countMeetings($firstDay, $lastDay) {
     $meetings = [];
 
         foreach($firstDay as $key => $item) {
-                $avalaible = range($firstDay[$key], $lastDay[$key]);
-                foreach($avalaible as $day) {
-                        if(!in_array($day, $meetings)) {
-                                $meetings[] =  $day;
+                $i = $item;
+                
+                while($i <= $lastDay[$key]) {
+                        if(!in_array($i, $meetings)) {
+                                $meetings[] =  $i;
                                 break;
                         }
-                } 
+                        $i++;
+                }
         }
 
     return count($meetings);
@@ -37,5 +39,4 @@ $last_day = [3, 2, 1, 3, 3];
 */
 // $fisrt_day = [1, 10, 11];
 // $last_day = [11, 10, 11];
-
 echo countMeetings($fisrt_day, $last_day);
