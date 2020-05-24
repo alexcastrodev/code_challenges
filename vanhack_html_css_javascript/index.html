@@ -1,40 +1,190 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:url"           content="https://www.your-domain.com/your-page.html" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Your Website Title" />
+    <meta property="og:description"   content="Your description" />
+    <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
+
     <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
     <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="icon" type="image/png" href="https://i.imgur.com/5vIKSig.png" />
+    
+    <link type="text/css" rel="stylesheet" href="style.css" />
     <script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
     <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
 </head>
 <body>
     <div id="app">
-        <b-navbar toggleable="lg"  variant="white">
-            <b-navbar-brand href="#">
-                <b-img :width="70" src="https://vanhack.com/Content/img/payment-page/logo-header.png" alt="Vanhack logo"></b-img>
+     <div>
+      <div class="top-image" :class='detail ? "detail-active" : "top-image-active"'>
+        <b-navbar toggleable="lg" class="navbar-events-vh">
+            <b-navbar-brand @click="back()" href="#">
+                <b-img :width="70" src="https://i.imgur.com/5vIKSig.png" alt="Vanhack logo"></b-img>
             </b-navbar-brand>
         
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         
             <b-collapse id="nav-collapse" is-nav>
               <b-navbar-nav>
-                <b-nav-item href="#">Link</b-nav-item>
-                <b-nav-item href="#" disabled>Disabled</b-nav-item>
+                <b-nav-item href="#" @click="back()" class="text-uppercase font-weight-bolder">Events</b-nav-item>
               </b-navbar-nav>
         
               <b-navbar-nav class="ml-auto">
-                <b-nav-form class="pt-1">
-                  <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-                  <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-                </b-nav-form>
-        
-                <b-nav-item-dropdown text="Langs" right>
-                  <b-dropdown-item href="#">EN</b-dropdown-item>
-                  <b-dropdown-item href="#">PT</b-dropdown-item>
+                <b-nav-item-dropdown  class="dark"  right>
+                  <template v-slot:button-content>
+                    <b-avatar badge-variant="info" src="https://i.imgur.com/5vIKSig.png">
+                      <template v-slot:badge>{{user.messages.length}}</template>
+                    </b-avatar>
+                  </template>
+                  <div v-if="user.messages.length">
+                    <b-dropdown-item @click="activeDetail(item.id)" v-for="(item, key) in user.messages"v-bind:key="key" >Applied {{itemDetail(item.id).title}}</b-dropdown-item>
+                  </div>
+                  <div v-else> 
+                    <b-dropdown-item>No notifications to show</b-dropdown-item>
+                  </div>
                 </b-nav-item-dropdown>
-        
             </b-collapse>
           </b-navbar>
-      {{ message }}
+          <b-container class="main-count align-self-center" v-show="!detail">
+            <b-row class="count">
+              <b-col :cols="2"><span class="days font-weight-bold">{{days}}</span></b-col>
+              <b-col :cols="2"><span class="hours font-weight-bold">{{hours}}</span></b-col>
+              <b-col :cols="2"><span class="minutes font-weight-bold">{{minutes}}</span></b-col>
+              <b-col :cols="2"><span class="seconds font-weight-bold">{{seconds}}</span></b-col>
+            </b-row>
+            <b-row class="count-texts">
+              <b-col :cols="2"><span class="text-white font-weight-bold text-uppercase">days</span></b-col>
+              <b-col :cols="2"><span class="text-white font-weight-bold text-uppercase">hours</span></b-col>
+              <b-col :cols="2"><span class="text-white font-weight-bold text-uppercase">minutes</span></b-col>
+              <b-col :cols="2"><span class="text-white font-weight-bold text-uppercase">seconds</span></b-col>
+            </b-row>
+            <b-row class="mt-4">
+              <b-col :cols="12"><span class="text-white font-weight-bold text-uppercase market-text">Virtual Hiring Fair
+              </span></b-col>
+              <b-col :cols="12"><span class="text-white font-weight-bold text-uppercase">June 12th to 15th
+              </span></b-col>
+            </b-row>
+          </b-container>
+        </div>
+        <div v-show="!detail" class="m-4">
+      <b-row  >
+        <b-col :cols="12" class="mb-2">
+        <b-card-group  >
+          <b-card no-body class="overflow-hidden" >
+            <b-row no-gutters>
+              <b-col md="6">
+                <b-card-img :src="getPinned.img" alt="Image" class="rounded-0"></b-card-img>
+              </b-col>
+              <b-col md="6">
+                <b-card-body :title="getPinned.title">
+                  <b-card-text>
+                    {{getPinned.sub1}}
+                  </b-card-text>
+                  <div class="text-right pt-5">
+                    <b-button @click="activeDetail(getPinned.id)" variant="outline-primary text-uppercase">I want to apply!</b-button>
+                  </div>
+                </b-card-body>
+                </b-col>
+                </b-card>
+                </b-card-group>
+                </b-col>
+      </b-row>
+    
+        <b-row>
+          <b-col
+          class="mt-3 col-12 col-6 col-md-4"
+          v-for="(item, key) in mock.events"
+          v-if="!item.pinned"
+          v-bind:key="key" :cols="4">
+        <b-card-group deck>
+          <b-card
+            border-variant="primary"
+            :header="item.title"
+            header-bg-variant="primary"
+            header-text-variant="white"
+            align="center"
+            :img-src="item.img"
+            img-alt="Image"
+            img-top
+          >
+            <b-card-text class="text-center"> {{item.sub1}}</b-card-text>
+            <b-dropdown-divider style="list-style-type: none;"></b-dropdown-divider>
+            <b-card-text class="text-right"><i class="fa fa-calendar"></i> {{item.date}}</b-card-text>
+            <b-card-text class="text-right"><i class="fa fa-globe"></i> {{item.location}}</b-card-text>
+            <b-button variant="outline-primary" @click="activeDetail(item.id)" v-b-modal.modalPopover>Read More</b-button>
+
+          </b-card>
+      </b-card-group>
+    </b-col>
+    </b-row>
+    </b-container>
+
+      </div>    
+    </div>    
+    <b-breadcrumb v-if="detail" class="m-0">
+      <b-breadcrumb-item @click="back()" href="#">
+        Events
+      </b-breadcrumb-item>
+      <b-breadcrumb-item active>{{getSelected.title}}</b-breadcrumb-item>
+    </b-breadcrumb>
+    
+    <b-card :title="getSelected.title"  v-if="detail">
+      <b-card-text>
+        <i class="fa fa-calendar" ></i> <em>{{getSelected.date}}</em>
+      </b-card-text>
+      <b-card bg-variant="white" v-if="!getSelected.premium" text-variant="black" title="Are you ready?">
+        <b-card-text >
+          Please make sure you have read the information above carefully
+        </b-card-text>
+        
+        <b-button href="#" @click="apply()"  variant="primary" class="text-right">{{ checkApply() }}</b-button>
+      </b-card>
+
+      <b-card bg-variant="dark" v-if="getSelected.premium" text-variant="white" title="VanHack Premium">
+        <b-card-text >
+          Acquire career skills that will make you stand out from the herd! Live interview practice, profile review, exclusive webinars and more.
+        </b-card-text>
+        
+        <b-button href="#" variant="primary" class="text-right">Join VannHack Premium!</b-button>
+      </b-card>
+      <div class="mt-3">
+      <b-card-text>{{getSelected.sub1}}</b-card-text>
+      <b-card-text>{{getSelected.sub2}}</b-card-text>
+    </div>
+    <div>
+      Share:
+      <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fvanhack.fluttership.com.br%2F&layout=button&size=small&appId=2626157360738447&width=105&height=20" width="105" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+    </b-card>
+  </div>
+</div>
+  <div class="vh-footer">
+      <b-container >
+        <b-row class="text-center mb-3">
+          <b-col class="cp" :cols="12">
+            <img src="https://i.imgur.com/2l73OKX.png" class="m-3" alt="Vanhack logo"/>
+          </b-col>
+        </b-row>
+        
+        <b-row class="text-center">
+          <b-col class="cp" cols="12">2020 Event Page - VanHack Challenge</b-col>
+        </b-row>
+        
+        <b-row class="text-center">
+          <b-col class="cp" cols="12">Created with <i class="fa fa-heart text-danger"></i> by  <a class="text-white" href="https://github.com/AlexcastroDev/">Alexandro Castro</a></b-col>
+          </b-row>
+
+        <b-row class="text-center pt-3 align-self-center">
+          <b-col class="socials" cols="12">
+           <a href="https://www.linkedin.com/in/alexandro-castro-23420a173/"><i class="fa fa-linkedin text-info mr-1"></i></a>
+           <a href="http://github.com/alexcastroDev/"><i class="fa fa-github mr-1"></i></a>
+           </b-col>
+        </b-row>
+     
+      </b-container>
+    </div>
     </div>
 </body>
 
@@ -42,9 +192,165 @@
     var app = new Vue({
         el: '#app',
         data: {
-            message: 'Hello Vue!'
+            mock: {
+              events: [
+                {
+                  id: 1,
+                  title: "VanHack Relocation Summit",
+                  date: " 27th Nov 2019",
+                  location: "Online",
+                  premium: false,
+                  can: false,
+                  sub1: "The new edition of VanHack Relocation Summit brings together insights and lessons from exceptional leaders, makers, and innovators in the international tech market - for 8 days of inspired conversation and purposeful networking.",
+                  sub2: "Join us to start changing your life: be part of the biggest online event for Tech Talent who want to relocate to Canada or Europe and get closer to your dream job abroad.",
+                  img: "https://i.imgur.com/SdFVFL5.png"
+                },
+                {
+                  id: 2,
+                  title: "VanHack Meetup",
+                  date: "29th May 2020",
+                  location: "Recife",
+                  premium: false,
+                  sub1: "VanHack is doing a Meetup in Recife this month. We are bringing an event for Tech Talents who want to relocate to Canada or Europe and don’t know how.",
+                  sub2: "At the Meetup, you’ll have the opportunity to be part of a live Recruiting Fair where you will see opportunities from companies in Canada and Europe looking for talents just like you.",
+                  img: "https://i.imgur.com/H3M2Nw1.png",
+                  can: true,
+                },
+                {
+                  id: 3,
+                  title: "VanHack Leap",
+                  date: "22th July 2020",
+                  location: "Online",
+                  premium: false,
+                  sub1: "Interview and Hire Top Tech Talent In Person.",
+                  sub2: "VanHack brings your company and the talent to the same space to have interviews and making the hiring process faster! Two events will help you on that: VanHack Leap and Recruiting Mission.",
+                  img: "https://www.vanhack.com/wp-content/uploads/2018/08/dot-map.png?x22068",
+                  can: true,
+                },
+                {
+                  id: 7,
+                  title: "Interview-practice class",
+                  date: "26th May 2020",
+                  location: "Online",
+                  premium: false,
+                  sub1: "Have you wondered what our Premium Interview-practice classes are like? This is a pretty popular service we offer at VanHack Premium. It’s a great opportunity to improve your interview skills, network, and also your English grammar, vocabulary, pronunciation, and confidence. Our Premium candidates absolutely love it!",
+                  sub2: "Come and join this FREE OPEN HOUSE CLASS! Get a little taste of VH Premium.",
+                  img: "https://i.imgur.com/SdFVFL5.png",
+                  can: true,
+                },
+                {
+                  id: 4,
+                  title: "Virtual Hiring Fair 2.0",
+                  date: "12th June 2020",
+                  location: "Online",
+                  premium: false,
+                  pinned: true,
+                  can: true,
+                  event: new Date(2020, 6, 12),
+                  sub1: "VanHack is hosting our second Virtual Hiring Fair between June 12th and 15th.  If you are looking for a job in Canada or Europe you should apply!                Some of the best companies in North America and Europe will be attending the virtual fair.                    Many of the open positions support a remote start and later relocation.",
+                  sub2: "This is an amazing chance to do interviews with international companies and land a job abroad. Don't miss it!",
+                  img: "https://image.slidesharecdn.com/vanhackfest1-160721012826/95/vanhack-fest-1-638.jpg"
+                },
+                {
+                  id: 5,
+                  title: "VanHack Webinar",
+                  date: "29th May 2020",
+                  location: "Online",
+                  premium: false,
+                  sub1: "Utilizing Global Skills Strategy with VanHack, quickly filling your hardest to fill roles.",
+                  sub2: "Vancouver Economic Commission overview of the Vancouver Tech Market and Ernest and Young overview of the Global Skills Visa",
+                  img: "https://blog.vanhack.com/wp-content/uploads/2017/07/Canada-Global-768x768.png",
+                  can: true,
+                },
+                {
+                  id: 6,
+                  title: "VanHack Webinar  - Premium only",
+                  date: "29th July 2020",
+                  location: "Online",
+                  premium: false,
+                  sub1: "Utilizing Global Skills Strategy with VanHack, quickly filling your hardest to fill roles.",
+                  sub2: "Vancouver Economic Commission overview of the Vancouver Tech Market and Ernest and Young overview of the Global Skills Visa",
+                  img: "https://blog.vanhack.com/wp-content/uploads/2017/07/Canada-Global-768x768.png",
+                  can: true,
+                },
+                
+              ]
+            },
+            detail: false,
+            active_id:  '',
+            user: {
+              messages: []
+            },
+            days:0,
+            hours:0,
+            minutes:0,
+            seconds:0,
+            intervals:{
+            second: 1000,
+            minute: 1000 * 60,
+            hour: 1000 * 60 * 60,
+            day: 1000 * 60 * 60 * 24
+          }
+        },
+        computed: {
+          getPinned()  {
+            return this.mock.events.find(item => item.pinned == true);
+          },
+          getSelected()  {
+            return this.mock.events.find(item => item.id == this.active_id);
+          },
+     
+        },
+        methods: {
+          activeDetail(id) {
+            this.active_id = id;
+            this.detail = true;
+          },
+          itemDetail(id) {
+            return this.mock.events.find(item => item.id == id);
+          },
+          checkApply() {
+            let item = (this.user.messages.find(item => item.id == this.active_id) || []);
+            if(Object.keys(item).length) {
+              return `Applied at ${item.applied.getDate()}/${item.applied.getMonth()}/${item.applied.getFullYear()}`
+            } else {
+              return this.getSelected.can ? "Apply now!": "No available" 
+            }
+          },
+          apply() {
+            let x = (this.user.messages.filter(item => item.id == this.active_id) || []);
+            if(!x.length && this.getSelected.can) {
+              this.user.messages.push({
+                id:  this.active_id,
+                applied: new Date()
+              })
+            }
+          },
+          back() {
+            this.active_id = 0;
+            this.detail = false;
+          },
+          updateDiffs() {
+              let diff = Math.abs(Date.now() - this.getPinned.event);
+              this.days = Math.floor(diff / this.intervals.day);
+              diff -= this.days * this.intervals.day;
+              this.hours = Math.floor(diff / this.intervals.hour);
+              diff -= this.hours * this.intervals.hour;
+              this.minutes = Math.floor(diff / this.intervals.minute);
+              diff -= this.minutes * this.intervals.minute;
+              this.seconds = Math.floor(diff / this.intervals.second);
         }
+      },
+      mounted() {
+        this.interval = setInterval(() => {
+          this.updateDiffs();
+        },1000);
+    
+        this.updateDiffs();
+      },
+      destroyed() {
+        clearInterval(this.interval);    
+      },
     })
 </script>
-
 </html>

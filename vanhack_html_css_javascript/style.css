@@ -1,0 +1,117 @@
+body {
+    overflow-x: hidden;
+}
+
+.top-image {
+    background-image: url('https://i.imgur.com/A48gcpG.jpg') !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+.top-image-active {
+    height: 100vh;
+}
+
+.active-detail {
+    height: 80px!important;
+}
+
+.vh-footer {
+    background-color: #343d47;
+    background: #343d47;
+    color: #fff;
+    padding: 70px 0;
+    text-align: center;
+    border-top: 1px solid #303841;
+    height: 40vh;
+}
+
+.cp {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+.socials a{
+    font-size: x-large;
+    color: #fff;    
+}
+
+.navbar-events-vh {
+    margin-left: 3rem  !important;
+    margin-right: 3rem  !important;
+}
+.navbar-nav .dropdown-menu {
+    background-color: #373F4A  !important;
+}
+.nav-tabs .nav-link:focus,.nav-tabs .nav-link:hover {
+    background-color: #000  !important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    color: rgb(3, 2, 2) !important;
+    text-decoration: none;
+    background-color: #fff;
+}
+
+.dropdown-item.active, .dropdown-item:hover {
+    color: rgb(3, 2, 2) !important;
+    text-decoration: none;
+    background-color: #fff;
+}
+
+
+.b-dropdown-item :active {
+    background-color: #000  !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .navbar-events-vh {
+        margin-left: 0.1rem  !important;
+        margin-right: 0.1rem  !important;
+    }
+}
+.main-count {
+    padding-top: 30vh;
+}
+
+.count {
+    font-size: 60px;
+}
+.count-texts {
+    font-size: 14px;
+}
+@media only screen and (max-width: 600px) {
+    .count {
+        font-size: 30px;
+    }
+    .count-texts {
+        font-size: 11px;
+    }
+  }
+
+.count .days {
+    color: rgb(239, 241, 68);
+}
+
+.count .hours {
+    color: rgb(209, 156, 33);
+}
+
+.count .minutes {
+    color: rgb(1, 120, 207);
+}
+
+.count .seconds {
+    color: rgb(49, 228, 33);
+}
+.nav-item a {
+    font-size: 16px;
+    color: #fff !important;
+}
+
+.market-text {
+    font-size: -webkit-xxx-large;
+    font-stretch: expanded;
+}
