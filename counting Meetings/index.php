@@ -5,9 +5,7 @@ function countMeetings($firstDay, $lastDay) {
     $count = 0;
         foreach($firstDay as $key => $item) {
                 $i = $item;
-                var_dump($i);
                 while($i <= $lastDay[$key]) {
-                    var_dump($i);
                     if(!in_array($i, $meetings)) {
                                 $meetings[] =  $i;
                                 $count++;
