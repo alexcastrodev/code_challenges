@@ -7,7 +7,8 @@ function fizzBuzz(n) {
 }
 
 function main() {
-    const n = parseInt(readLine().trim(), 10);
+    // const n = parseInt(readLine().trim(), 10);
+    const n = 10;
     let arr = 1;
     arr = Array.from(Array(n), ()=>arr++);
     for(let x of arr) {
