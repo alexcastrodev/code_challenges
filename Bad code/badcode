@@ -1,0 +1,92 @@
+
+w = <USER INPUT>;
+
+ag = <USER INPUT>;
+
+
+
+function avgVal(w, ag) {
+
+ listVals = query("SELECT avg_weight, age FROM user_stats");
+
+ otherVals = query("SELECT avgWeight, age FROM world_health_stats");
+
+
+
+ declare var isAv;
+
+
+
+ for (val in listVals) {
+
+   for (val2 in otherVals) {
+
+     if (val.age == val2.age) {
+
+       if (val.avg_weight == val2.avgWeight) {
+
+         if (val.age == ag && val.avg_weight == w) {
+
+           isAv = true;
+
+         }
+
+       }
+
+     }
+
+   }
+
+ }
+
+
+
+ if (isAv == undefined) {
+
+   isAv = false;
+
+ }
+
+
+
+ return isAv;
+
+}
+
+
+
+if (w > 50) {
+
+ if (ag > 12) {
+
+   return avgVal(w, ag);
+
+ }
+
+ else if (ag <= 12 && ag >=6) {
+
+   return avgVal(w, ag);
+
+ }
+
+ else {
+
+   throw "Cannot determine if user age and weight are average";
+
+ }
+
+} else {
+
+ if (ag < 12) {
+
+   return avgVal(w, ag);
+
+ }
+
+ else {
+
+   throw "Cannot determine if user age and weight are average";
+
+ }
+
+}
