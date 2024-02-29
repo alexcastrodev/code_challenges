@@ -1,0 +1,207 @@
+repo_name: AlexcastroDev/code_challenges
+report_id: 6eb1d9f57bb45d19ce04e76a3ec1493c
+version: 0.1
+repo_type: Public
+timestamp: '2024-02-29T19:22:46+00:00'
+requested_by: AlexcastroDev
+provider: github
+branch: master
+detected_tools_count: 16
+tools:
+- name: C lang
+  description: One of the most widely used programming languages of all time
+  website_url: http://en.wikipedia.org/wiki/C_(programming_language)
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/no-img-open-source.png
+  detection_source_url: https://github.com/AlexcastroDev/code_challenges
+  detection_source: Repo Metadata
+- name: Dart
+  description: A new web programming language with libraries, a virtual machine, and
+    tools
+  website_url: https://www.dartlang.org/
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1646/Twitter-02.png
+  detection_source_url: https://github.com/AlexcastroDev/code_challenges
+  detection_source: Repo Metadata
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/AlexcastroDev/code_challenges
+  detection_source: Repo Metadata
+- name: PHP
+  description: A popular general-purpose scripting language that is especially suited
+    to web development
+  website_url: http://www.php.net/
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/991/hwUcGZ41_400x400.jpg
+  detection_source_url: https://github.com/AlexcastroDev/code_challenges
+  detection_source: Repo Metadata
+- name: Python
+  description: A clear and powerful object-oriented programming language, comparable
+    to Perl, Ruby, Scheme, or Java.
+  website_url: https://www.python.org
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/993/pUBY5pVj.png
+  detection_source_url: https://github.com/AlexcastroDev/code_challenges
+  detection_source: Repo Metadata
+- name: Ruby
+  description: A dynamic, interpreted, open source programming language with a focus
+    on simplicity and productivity
+  website_url: https://www.ruby-lang.org
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/989/ruby.png
+  detection_source_url: https://github.com/AlexcastroDev/code_challenges
+  detection_source: Repo Metadata
+- name: Babel
+  description: Use next generation JavaScript, today.
+  website_url: http://babeljs.io/
+  version: 7.9.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: JavaScript Compilers
+  image_url: https://img.stackshare.io/service/2739/-1wfGjNw.png
+  detection_source_url: https://github.com/AlexcastroDev/code_challenges/blob/master/Orders/yarn.lock
+  detection_source: Orders/.babelrc
+  last_updated_by: Alexandro
+  last_updated_on: 2021-04-25 06:18:51.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/AlexcastroDev/code_challenges
+  detection_source: Repo Metadata
+- name: Jasmine
+  description: DOM-less simple JavaScript testing framework
+  website_url: http://jasmine.github.io/
+  version: 3.5.0
+  open_source: false
+  hosted_saas: true
+  category: Build, Test, Deploy
+  sub_category: Javascript Testing Framework
+  image_url: https://img.stackshare.io/service/831/7c0b595409af531b9cdeb07f8c513e8b.png
+  detection_source_url: https://github.com/AlexcastroDev/code_challenges/blob/master/Orders/yarn.lock
+  detection_source: Orders/package.json
+  last_updated_by: Alexandro
+  last_updated_on: 2021-04-25 06:18:51.000000000 Z
+- name: Yarn
+  description: A new package manager for JavaScript
+  website_url: https://yarnpkg.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/5848/44mC-kJ3.jpg
+  detection_source_url: https://github.com/AlexcastroDev/code_challenges/blob/master/Orders/yarn.lock
+  detection_source: Orders/yarn.lock
+  last_updated_by: Alexandro
+  last_updated_on: 2021-04-25 06:18:51.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/AlexcastroDev/code_challenges/blob/master/Orders/package.json
+  detection_source: Orders/package.json
+  last_updated_by: Alexandro
+  last_updated_on: 2021-04-25 06:18:51.000000000 Z
+- name: "@babel/core"
+  description: Babel compiler core
+  package_url: https://www.npmjs.com/@babel/core
+  version: 7.9.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15810/default_004658cda9b38934f2871435e9dc15608c86e8be.png
+  detection_source_url: https://github.com/AlexcastroDev/code_challenges/blob/master/Orders/yarn.lock
+  detection_source: Orders/package.json
+  last_updated_by: Alexandro
+  last_updated_on: 2021-04-25 06:18:51.000000000 Z
+- name: "@babel/node"
+  description: Babel command line
+  package_url: https://www.npmjs.com/@babel/node
+  version: 7.8.7
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16153/default_ac04a744873b460c4ef30a7450ed0c83223640ab.png
+  detection_source_url: https://github.com/AlexcastroDev/code_challenges/blob/master/Orders/yarn.lock
+  detection_source: Orders/package.json
+  last_updated_by: Alexandro
+  last_updated_on: 2021-04-25 06:18:51.000000000 Z
+- name: "@babel/preset-env"
+  description: A Babel preset for each environment
+  package_url: https://www.npmjs.com/@babel/preset-env
+  version: 7.9.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15819/default_98aa227f51aa9d787815ec3fd98d0ab2bfebbb91.png
+  detection_source_url: https://github.com/AlexcastroDev/code_challenges/blob/master/Orders/yarn.lock
+  detection_source: Orders/package.json
+  last_updated_by: Alexandro
+  last_updated_on: 2021-04-25 06:18:51.000000000 Z
+- name: chokidar-cli
+  description: Ultra-fast cross-platform command line utility to watch file system
+    changes
+  package_url: https://www.npmjs.com/chokidar-cli
+  version: 2.1.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16834/default_21db97bdb9f4092d80f256d3afec4658fbafe443.png
+  detection_source_url: https://github.com/AlexcastroDev/code_challenges/blob/master/Orders/yarn.lock
+  detection_source: Orders/package.json
+  last_updated_by: Alexandro
+  last_updated_on: 2021-04-25 06:18:51.000000000 Z
+- name: jasmine-reporters
+  description: Reporters for the Jasmine BDD Framework
+  package_url: https://www.npmjs.com/jasmine-reporters
+  version: 2.3.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17569/default_661ab15cb9ea1663765f3e16ee70a1d2d50118d1.png
+  detection_source_url: https://github.com/AlexcastroDev/code_challenges/blob/master/Orders/yarn.lock
+  detection_source: Orders/package.json
+  last_updated_by: Alexandro
+  last_updated_on: 2021-04-25 06:18:51.000000000 Z
